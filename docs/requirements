@@ -1,0 +1,6 @@
+pip install uvicorn
+pip install FastApi
+pip install apscheduler
+pip install celery redis
+pip install selenium
+pip install pyautogui

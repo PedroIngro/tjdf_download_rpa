@@ -1,0 +1,32 @@
+from fastapi import FastAPI
+from mecanismo import router
+from apscheduler.schedulers.background import BackgroundScheduler
+import datetime
+
+app = FastAPI()
+
+
+@app.get("/")
+def document() -> str:
+    detalhes = "Em desenvolvimento"
+    return detalhes
+
+
+app.include_router(router)
+
+# # Agenda execução para todos os dias de manhã
+# scheduler = BackgroundScheduler()
+# def agendar_tarefa():
+#     from mecanismo import run
+#     run()
+
+# scheduler.add_job(agendar_tarefa, 'cron', hour=8, minute=30)
+
+# scheduler.start()
+
+@app.post("/start-api")
+async def start_api():
+    # Chamar o script mecanismo.py usando o subprocesso Popen
+    # Certifique-se de ajustar o comando conforme necessário para chamar seu script
+    Popen(["python", "mecanismo.py"])
+    return {"message": "API started"}
